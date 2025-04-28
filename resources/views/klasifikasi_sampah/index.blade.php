@@ -19,6 +19,8 @@
                     <th>Jenis Sampah</th>
                     <th>Kategori Sampah</th>
                     <th>Deskripsi</th>
+                    <th>Satuan Berat (Kg)</th>
+                    <th>Satuan Harga (Rp)</th>
                     <th width="200px">Aksi</th>
                 </tr>
             </thead>
@@ -29,13 +31,16 @@
                         <td>{{ $sampah->jenis_sampah }}</td>
                         <td>{{ $sampah->kategori_sampah }}</td>
                         <td>{{ $sampah->deskripsi }}</td>
+                        <td>{{ $sampah->kg }}</td>
+                        <td>{{ number_format($sampah->harga, 0, ',', '.') }}</td>
                         <td>
-                            <a href="{{ route('klasifikasi_sampah.show', $sampah->id) }}" class="btn btn-info">Lihat</a>
-                            <a href="{{ route('klasifikasi_sampah.edit', $sampah->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('klasifikasi_sampah.show', $sampah->id) }}" class="btn btn-info btn-sm">Lihat</a>
+                            <a href="{{ route('klasifikasi_sampah.edit', $sampah->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        
     </div>
 @endsection

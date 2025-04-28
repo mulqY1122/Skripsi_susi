@@ -17,6 +17,8 @@ class KlasifikasiSampah extends Model
         'jenis_sampah',
         'kategori_sampah',
         'deskripsi',
+        'kg',        // <--- Ditambahkan
+        'harga',     // <--- Ditambahkan
     ];
 
     /**
@@ -37,7 +39,7 @@ class KlasifikasiSampah extends Model
     {
         return $this->hasMany(BukuTabungan::class, 'klasifikasi_sampah_id');
     }
-    // Tambahkan di dalam class KlasifikasiSampah
+
     public function laporanBulanan()
     {
         return $this->hasMany(LaporanBulanan::class, 'klasifikasi_sampah_id');

@@ -43,16 +43,16 @@ class KlasifikasiSampahController extends Controller
             'jenis_sampah' => 'required|string|max:255',
             'kategori_sampah' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
+            'kg' => 'nullable|numeric|min:0',    // <-- Tambahkan validasi kg
+            'harga' => 'nullable|numeric|min:0', // <-- Tambahkan validasi harga
         ]);
 
         // Simpan data ke database
         KlasifikasiSampah::create($request->all());
 
-        // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('klasifikasi_sampah.index')
-                         ->with('success', 'Data klasifikasi sampah berhasil ditambahkan.');
+            ->with('success', 'Data klasifikasi sampah berhasil ditambahkan.');
     }
-
     /**
      * Display the specified resource.
      *
@@ -91,15 +91,17 @@ class KlasifikasiSampahController extends Controller
             'jenis_sampah' => 'required|string|max:255',
             'kategori_sampah' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
+            'kg' => 'nullable|numeric|min:0',    // <-- Tambahkan validasi kg
+            'harga' => 'nullable|numeric|min:0', // <-- Tambahkan validasi harga
         ]);
 
         // Update data di database
         $klasifikasiSampah->update($request->all());
 
-        // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('klasifikasi_sampah.index')
-                         ->with('success', 'Data klasifikasi sampah berhasil diperbarui.');
+            ->with('success', 'Data klasifikasi sampah berhasil diperbarui.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -114,6 +116,6 @@ class KlasifikasiSampahController extends Controller
 
         // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('klasifikasi_sampah.index')
-                         ->with('success', 'Data klasifikasi sampah berhasil dihapus.');
+            ->with('success', 'Data klasifikasi sampah berhasil dihapus.');
     }
 }
