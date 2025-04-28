@@ -8,113 +8,99 @@ use Illuminate\Http\Request;
 class KlasifikasiSampahController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Tampilkan semua data klasifikasi sampah.
      */
     public function index()
     {
-        // Menampilkan semua data klasifikasi sampah
         $data = KlasifikasiSampah::all();
         return view('klasifikasi_sampah.index', compact('data'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Tampilkan form tambah data baru.
      */
     public function create()
     {
-        // Menampilkan form untuk membuat data baru
         return view('klasifikasi_sampah.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Simpan data baru ke database.
      */
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'jenis_sampah' => 'required|string|max:255',
+            'jenis_sampah'   => 'required|string|max:255',
             'kategori_sampah' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'kg' => 'nullable|numeric|min:0',    // <-- Tambahkan validasi kg
-            'harga' => 'nullable|numeric|min:0', // <-- Tambahkan validasi harga
+            'deskripsi'      => 'nullable|string',
+            'kg'             => 'nullable|numeric|min:0',
+            'harga_jual'     => 'nullable|numeric|min:0',
+            'harga_beli'     => 'nullable|numeric|min:0',
         ]);
 
-        // Simpan data ke database
-        KlasifikasiSampah::create($request->all());
+        KlasifikasiSampah::create([
+            'jenis_sampah'    => $request->jenis_sampah,
+            'kategori_sampah' => $request->kategori_sampah,
+            'deskripsi'       => $request->deskripsi,
+            'kg'              => $request->kg,
+            'harga_jual'      => $request->harga_jual,
+            'harga_beli'      => $request->harga_beli,
+        ]);
 
         return redirect()->route('klasifikasi_sampah.index')
             ->with('success', 'Data klasifikasi sampah berhasil ditambahkan.');
     }
+
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\KlasifikasiSampah  $klasifikasiSampah
-     * @return \Illuminate\Http\Response
+     * Tampilkan detail data.
      */
     public function show(KlasifikasiSampah $klasifikasiSampah)
     {
-        // Menampilkan data spesifik
         return view('klasifikasi_sampah.show', compact('klasifikasiSampah'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\KlasifikasiSampah  $klasifikasiSampah
-     * @return \Illuminate\Http\Response
+     * Tampilkan form edit data.
      */
     public function edit(KlasifikasiSampah $klasifikasiSampah)
     {
-        // Menampilkan form untuk mengedit data
         return view('klasifikasi_sampah.edit', compact('klasifikasiSampah'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\KlasifikasiSampah  $klasifikasiSampah
-     * @return \Illuminate\Http\Response
+     * Update data yang ada di database.
      */
     public function update(Request $request, KlasifikasiSampah $klasifikasiSampah)
     {
-        // Validasi input
         $request->validate([
-            'jenis_sampah' => 'required|string|max:255',
+            'jenis_sampah'   => 'required|string|max:255',
             'kategori_sampah' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'kg' => 'nullable|numeric|min:0',    // <-- Tambahkan validasi kg
-            'harga' => 'nullable|numeric|min:0', // <-- Tambahkan validasi harga
+            'deskripsi'      => 'nullable|string',
+            'kg'             => 'nullable|numeric|min:0',
+            'harga_jual'     => 'nullable|numeric|min:0',
+            'harga_beli'     => 'nullable|numeric|min:0',
         ]);
 
-        // Update data di database
-        $klasifikasiSampah->update($request->all());
+        $klasifikasiSampah->update([
+            'jenis_sampah'    => $request->jenis_sampah,
+            'kategori_sampah' => $request->kategori_sampah,
+            'deskripsi'       => $request->deskripsi,
+            'kg'              => $request->kg,
+            'harga_jual'      => $request->harga_jual,
+            'harga_beli'      => $request->harga_beli,
+        ]);
 
         return redirect()->route('klasifikasi_sampah.index')
             ->with('success', 'Data klasifikasi sampah berhasil diperbarui.');
     }
 
-
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\KlasifikasiSampah  $klasifikasiSampah
-     * @return \Illuminate\Http\Response
+     * Hapus data dari database.
      */
     public function destroy(KlasifikasiSampah $klasifikasiSampah)
     {
-        // Hapus data dari database
         $klasifikasiSampah->delete();
 
-        // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('klasifikasi_sampah.index')
             ->with('success', 'Data klasifikasi sampah berhasil dihapus.');
     }

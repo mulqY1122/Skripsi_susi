@@ -25,6 +25,12 @@ class DataNasabah extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function bukuKeuanganMasuk()
+    {
+        return $this->hasMany(BukuKeuanganNasabahMasuk::class, 'data_nasabah_id');
+    }
+
+
     // Relasi dengan NamaRw
     public function namaRw()
     {

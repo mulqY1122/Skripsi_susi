@@ -55,3 +55,7 @@ Route::middleware(['auth'])->group(function () {
 });
 // Route buku tabungan
 Route::get('/buku-tabungan/export-pdf/{id}', [BukuTabunganController::class, 'exportPdf'])->name('buku_tabungan.export_pdf');
+
+use App\Http\Controllers\BukuKeuanganNasabahMasukController;
+
+Route::resource('buku_keuangan_nasabah_masuk', BukuKeuanganNasabahMasukController::class);
