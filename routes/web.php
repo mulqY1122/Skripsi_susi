@@ -53,5 +53,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('laporan_bulanan', LaporanBulananController::class);
     Route::get('/laporan/jenis-sampah', [LaporanBulananController::class, 'laporanJenisSampah'])->name('laporan.jenis_sampah');
 });
-
+// Route buku tabungan
 Route::get('/buku-tabungan/export-pdf/{id}', [BukuTabunganController::class, 'exportPdf'])->name('buku_tabungan.export_pdf');
