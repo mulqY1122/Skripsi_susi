@@ -60,10 +60,11 @@
 
                                 <div class="mb-3">
                                     <label>Jenis & Kategori Sampah</label>
-                                    <select name="klasifikasi_sampah_id" class="form-control" required>
+                                    <select name="klasifikasi_sampah_id" id="klasifikasi_sampah_id" class="form-control" required>
                                         <option value="">-- Pilih Jenis Sampah --</option>
                                         @foreach($klasifikasiSampah as $sampah)
-                                            <option value="{{ $sampah->id }}" {{ old('klasifikasi_sampah_id') == $sampah->id ? 'selected' : '' }}>
+                                            <option value="{{ $sampah->id }}" data-harga="{{ $sampah->harga_jual }}"
+                                                {{ old('klasifikasi_sampah_id') == $sampah->id ? 'selected' : '' }}>
                                                 {{ $sampah->jenis_sampah }} - {{ $sampah->kategori_sampah }}
                                             </option>
                                         @endforeach
@@ -77,17 +78,17 @@
 
                                 <div class="mb-3">
                                     <label>Berat (kg)</label>
-                                    <input type="number" name="berat" class="form-control" step="0.01" value="{{ old('berat') }}" required>
+                                    <input type="number" name="berat" id="berat" class="form-control" step="0.01" value="{{ old('berat') }}" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label>Harga per Kg</label>
-                                    <input type="number" name="harga" class="form-control" value="{{ old('harga') }}" required>
+                                    <input type="number" name="harga" id="harga" class="form-control" value="{{ old('harga') }}" readonly required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label>Total Harga</label>
-                                    <input type="number" name="total_harga" class="form-control" readonly>
+                                    <input type="number" name="total_harga" id="total_harga" class="form-control" readonly>
                                 </div>
 
                                 <div class="mb-3">
@@ -105,15 +106,22 @@
         </div>
     </section>
 </div>
-
 @endsection
 
 @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const beratInput = document.querySelector('input[name="berat"]');
-        const hargaInput = document.querySelector('input[name="harga"]');
-        const totalInput = document.querySelector('input[name="total_harga"]');
+        const beratInput = document.getElementById('berat');
+        const hargaInput = document.getElementById('harga');
+        const totalInput = document.getElementById('total_harga');
+        const klasifikasiSelect = document.getElementById('klasifikasi_sampah_id');
+
+        function updateHarga() {
+            const selectedOption = klasifikasiSelect.options[klasifikasiSelect.selectedIndex];
+            const harga = selectedOption.getAttribute('data-harga') || 0;
+            hargaInput.value = harga;
+            updateTotal();
+        }
 
         function updateTotal() {
             const berat = parseFloat(beratInput.value) || 0;
@@ -122,9 +130,10 @@
         }
 
         beratInput.addEventListener('input', updateTotal);
-        hargaInput.addEventListener('input', updateTotal);
+        klasifikasiSelect.addEventListener('change', updateHarga);
 
-        // Trigger update on load (in case data is pre-filled)
+        // Initial call if form has old values
+        updateHarga();
         updateTotal();
     });
 </script>

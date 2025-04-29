@@ -121,7 +121,8 @@
                                         <td>{{ $laporan->klasifikasiSampah->jenis_sampah ?? '-' }} - {{ $laporan->klasifikasiSampah->kategori_sampah ?? '-' }}</td>
                                         <td>{{ $laporan->nama_sampah }}</td>
                                         <td>{{ number_format($laporan->berat, 2) }}</td>
-                                        <td>Rp{{ number_format($laporan->harga, 0, ',', '.') }}</td>
+                                        <td>Rp{{ number_format($laporan->harga ?? 0, 0, ',', '.') }}</td>
+
                                         <td>Rp{{ number_format($laporan->total_harga, 0, ',', '.') }}</td>
                                         <td>{{ $laporan->keterangan ?? '-' }}</td>
                                         <td>
