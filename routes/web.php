@@ -69,3 +69,4 @@ Route::get('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarContro
 Route::get('buku-keuangan-nasabah-keluar/{id}/edit', [BukuKeuanganNasabahKeluarController::class, 'edit'])->name('buku-keuangan-nasabah-keluar.edit');
 Route::put('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarController::class, 'update'])->name('buku-keuangan-nasabah-keluar.update');
 Route::delete('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarController::class, 'destroy'])->name('buku-keuangan-nasabah-keluar.destroy');
+Route::get('/buku-keuangan-nasabah-masuk/cetak/{id}', [App\Http\Controllers\BukuKeuanganNasabahMasukController::class, 'cetakPdf'])->name('buku_keuangan_nasabah_masuk.cetak');

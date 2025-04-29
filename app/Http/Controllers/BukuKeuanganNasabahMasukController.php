@@ -7,6 +7,7 @@ use App\Models\BukuKeuanganNasabahMasuk;
 use App\Models\DataNasabah;
 use App\Models\KlasifikasiSampah;
 use Illuminate\Http\Request;
+use PDF; // Tambahkan di bagian atas file controller
 
 class BukuKeuanganNasabahMasukController extends Controller
 {
@@ -137,4 +138,12 @@ class BukuKeuanganNasabahMasukController extends Controller
 
         return redirect()->route('buku_keuangan_nasabah_masuk.index')->with('success', 'Data pemasukan berhasil dihapus.');
     }
+    public function cetakPdf($id)
+{
+    $pemasukan = BukuKeuanganNasabahMasuk::with(['nasabah', 'klasifikasiSampah'])->findOrFail($id);
+
+    $pdf = PDF::loadView('buku_keuangan_nasabah_masuk.pdf', compact('pemasukan'));
+
+    return $pdf->download('pemasukan_nasabah_'.$id.'.pdf');
+}
 }

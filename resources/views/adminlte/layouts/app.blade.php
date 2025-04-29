@@ -355,26 +355,6 @@
                             <i class="nav-icon fas fa-wallet fa-xs"></i>
                             <p class="small">Keuangan <i class="right fas fa-angle-left"></i></p>
                             </a>
-                            @if(in_array(auth()->user()->role_name, ['User', 'Admin','Super Admin']))  
-                            <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                  <a href="{{ route('buku_tabungan.index') }}" class="nav-link">
-                                  <i class="fas fa-book nav-icon fa-xs"></i>
-                                  <p class="small">Buku Tabungan</p>
-                                  </a>
-                              </li>
-                              </ul> 
-                              @endauth
-                              @if(in_array(auth()->user()->role_name, ['Admin','Super Admin']))                   
-                            <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('laporan_bulanan.index') }}" class="nav-link">
-                                <i class="fas fa-calendar-alt nav-icon"></i>
-                                <p class="small">Rekap Bulanan</p>
-                                </a>
-                            </li>
-                            </ul>
-                            @endauth
                             @if(in_array(auth()->user()->role_name, ['Super Admin']))
                             <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -385,6 +365,22 @@
                             </li>
                             </ul>
                             @endauth
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="{{ route('buku_keuangan_nasabah_masuk.index') }}" class="nav-link">
+                                  <i class="fas fa-chart-line nav-icon"></i>
+                                  <p class="small">Keuangan Nasabah</p>
+                                  </a>
+                              </li>
+                              </ul>
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="{{ route('laporan_bulanan.index') }}" class="nav-link">
+                                    <i class="fas fa-chart-line nav-icon"></i>
+                                    <p class="small">Keuangan RW</p>
+                                    </a>
+                                </li>
+                                </ul>
                         </li>                     
                         
                         {{-- Laporan --}}

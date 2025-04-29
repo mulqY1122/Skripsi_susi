@@ -115,31 +115,31 @@
                       <td>{{ $item->jumlah_berat }} kg</td>
                       <td>Rp {{ number_format($item->jumlah_masuk, 2) }}</td>
                       <td class="text-center" style="font-size: 0.75rem;">
+                        <!-- Tombol Lihat -->
                         <a href="{{ route('buku-keuangan-nasabah-keluar.create', ['id_masuk' => $item->id]) }}" class="btn btn-info btn-sm rounded-pill px-2 py-1 me-2">
                             <i class="fas fa-eye"></i>
                         </a>
-                        
-                        <!-- Tombol Lihat -->
-<!-- Tombol Lihat di index -->
-<a href="{{ route('buku-keuangan-nasabah-keluar.create', ['id_masuk' => $item->id]) }}" class="btn btn-info btn-sm rounded-pill px-2 py-1 me-2">
-    <i class="fas fa-eye"></i> 
-</a>
-
-                        
+                    
                         <!-- Tombol Edit -->
                         <a href="{{ route('buku_keuangan_nasabah_masuk.edit', $item->id) }}" class="btn btn-warning btn-sm rounded-pill px-2 py-1 me-2">
-                          <i class="fas fa-edit"></i> 
+                            <i class="fas fa-edit"></i> 
                         </a>
-                        
+                    
+                        <!-- Tombol Cetak PDF -->
+                        <a href="{{ route('buku_keuangan_nasabah_masuk.cetak', $item->id) }}" class="btn btn-secondary btn-sm rounded-pill px-2 py-1 me-2" target="_blank">
+                            <i class="fas fa-file-pdf"></i> 
+                        </a>
+                    
                         <!-- Form Hapus -->
                         <form action="{{ route('buku_keuangan_nasabah_masuk.destroy', $item->id) }}" method="POST" style="display:inline-block;">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm rounded-pill px-2 py-1" onclick="return confirm('Apakah Anda yakin?')">
-                            <i class="fas fa-trash-alt"></i> 
-                          </button>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm rounded-pill px-2 py-1" onclick="return confirm('Apakah Anda yakin?')">
+                                <i class="fas fa-trash-alt"></i> 
+                            </button>
                         </form>
-                      </td>
+                    </td>
+                    
                       
                     </tr>
                     @endforeach
