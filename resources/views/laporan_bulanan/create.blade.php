@@ -81,7 +81,7 @@
                                     <input type="number" name="berat" id="berat" class="form-control" step="0.01" value="{{ old('berat') }}" required>
                                 </div>
 
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label>Harga per Kg</label>
                                     <input type="number" name="harga" id="harga" class="form-control" value="{{ old('harga') }}" readonly required>
                                 </div>
@@ -89,7 +89,7 @@
                                 <div class="mb-3">
                                     <label>Total Harga</label>
                                     <input type="number" name="total_harga" id="total_harga" class="form-control" readonly>
-                                </div>
+                                </div> --}}
 
                                 <div class="mb-3">
                                     <label>Keterangan</label>
