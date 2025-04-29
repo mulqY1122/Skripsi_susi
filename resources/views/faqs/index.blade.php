@@ -48,11 +48,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Daftar FAQ</h1>
+            <h1 class="m-0">Daftar Pengajuan Penjemputan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">FAQ</li>
+              <li class="breadcrumb-item active">Pengajuan Penjemputan</li>
             </ol>
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Daftar FAQ</h3>
+                <h3 class="card-title">Daftar Pengajuan Penjemputan</h3>
               </div>
               <div class="card-body">
                 @if (session('success'))
@@ -88,6 +88,7 @@
                       <th>Nama Pengirim</th>
                       <th>Email</th>
                       <th>Tujuan</th>
+                      <th>Alamat Jemput</th> {{-- Tambahan kolom --}}
                       <th>Pesan</th>
                       <th>Jawaban</th>
                       <th>Aksi</th>
@@ -100,6 +101,7 @@
                         <td>{{ $faq->name }}</td>
                         <td>{{ $faq->email }}</td>
                         <td>{{ $faq->subject }}</td>
+                        <td>{{ $faq->alamat_jemput ?? '-' }}</td> {{-- Tampilkan alamat jemput --}}
                         <td>{{ $faq->message }}</td>
                         <td>{{ $faq->answer ?? 'Belum ada jawaban' }}</td>
                         <td>
@@ -114,6 +116,7 @@
                     @endforeach
                   </tbody>
                 </table>
+                
               </div>
             </div>
           </div>

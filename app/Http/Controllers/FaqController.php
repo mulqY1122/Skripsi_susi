@@ -50,6 +50,7 @@ class FaqController extends Controller
         $request->validate([
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
+            'alamat_jemput' => 'nullable|string|max:255', // Tambahan validasi
         ]);
 
         // Ambil data user yang sedang login
@@ -57,12 +58,13 @@ class FaqController extends Controller
 
         // Buat FAQ baru
         Faq::create([
-            'user_id' => $user->id, // Ambil user_id dari user yang sedang login
-            'name' => $user->name,  // Ambil name dari user yang login
-            'email' => $user->email, // Ambil email dari user yang login
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
             'subject' => $request->subject,
             'message' => $request->message,
-            'answer' => null, // Nullable, jawabannya bisa ditambahkan nanti
+            'alamat_jemput' => $request->alamat_jemput, // Tambahan data alamat jemput
+            'answer' => null,
         ]);
 
         return redirect()->route('faqs.index')->with('success', 'FAQ berhasil ditambahkan.');

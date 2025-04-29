@@ -15,7 +15,13 @@ class Faq extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'name', 'email', 'subject', 'message', 'answer',
+        'user_id',
+        'name',
+        'email',
+        'alamat_jemput', // Tambahan disini
+        'subject',
+        'message',
+        'answer',
     ];
 
     /**

@@ -49,13 +49,13 @@
       <div class="row mb-2 align-items-center">
         <div class="col-sm-6">
           <h1 class="m-0">
-            <i class="fas fa-book text-primary"></i> Daftar Buku Tabungan
+            <i class="fas fa-book text-primary"></i> Daftar Keuangan RW
           </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item active">
-              <i class="fas fa-folder-open"></i> Buku Tabungan Nasabah Per bulan 
+              <i class="fas fa-folder-open"></i> Keuangan RW
             </li>
           </ol>
         </div>
@@ -70,13 +70,13 @@
           <div class="card shadow">
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
               <h3 class="card-title m-0">
-                <i class="fas fa-clipboard-list"></i> Daftar Buku Tabungan
+                <i class="fas fa-clipboard-list"></i> Daftar Keuangan RW
               </h3>
               @if(in_array(auth()->user()->role_name, ['Super Admin', 'Admin']))
               <a href="{{ route('buku_tabungan.create') }}" 
               class="btn text-dark"
               style="background: linear-gradient(to right, #0cb900, #94c79a); border: none; font-weight: 600;">
-                <i class="fas fa-plus-circle me-1"></i> Tambah Buku
+                <i class="fas fa-plus-circle me-1"></i> Tambah Keuangan RW
               </a>
               @endif
             </div>

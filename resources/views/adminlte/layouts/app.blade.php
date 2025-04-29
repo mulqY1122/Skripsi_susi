@@ -157,6 +157,7 @@
     body {
       transition: background-color 0.3s ease, color 0.3s ease;
     }
+    
   </style>
 </head>
 
@@ -384,7 +385,55 @@
                             </li>
                             </ul>
                             @endauth
-                        </li>
+                        </li>                     
+                        
+                        {{-- Laporan --}}
+                        <li class="nav-item">
+                          <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-file-alt fa-xs"></i> <!-- Ganti ikon utama ke laporan -->
+                              <p class="small">Menu Laporan <i class="right fas fa-angle-left"></i></p>
+                          </a>
+                      
+                          @if(in_array(auth()->user()->role_name, ['User', 'Admin', 'Super Admin']))
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fas fa-receipt nav-icon fa-xs"></i> <!-- Ganti ke receipt untuk laporan nasabah -->
+                                      <p class="small">Laporan Keuangan Nasabah</p>
+                                  </a>
+                              </li>
+                          </ul>
+                          @endif
+                      
+                          @if(in_array(auth()->user()->role_name, ['Admin', 'Super Admin']))
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fas fa-university nav-icon fa-xs"></i> <!-- Ganti ke university untuk RW -->
+                                      <p class="small">Laporan Keuangan RW</p>
+                                  </a>
+                              </li>
+                          </ul>
+                          @endif
+                      
+                          @if(in_array(auth()->user()->role_name, ['Super Admin']))
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fas fa-clipboard-list nav-icon fa-xs"></i> <!-- Induk laporan -->
+                                      <p class="small">Laporan Induk</p>
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fas fa-flag-checkered nav-icon fa-xs"></i> <!-- Akhir laporan -->
+                                      <p class="small">Laporan Akhir</p>
+                                  </a>
+                              </li>
+                          </ul>
+                          @endif
+                      </li>
+                      
                       
                       {{-- FAQ --}}
                       <li class="nav-item">

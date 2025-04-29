@@ -59,3 +59,13 @@ Route::get('/buku-tabungan/export-pdf/{id}', [BukuTabunganController::class, 'ex
 use App\Http\Controllers\BukuKeuanganNasabahMasukController;
 
 Route::resource('buku_keuangan_nasabah_masuk', BukuKeuanganNasabahMasukController::class);
+
+use App\Http\Controllers\BukuKeuanganNasabahKeluarController;
+
+Route::get('buku-keuangan-nasabah-keluar', [BukuKeuanganNasabahKeluarController::class, 'index'])->name('buku-keuangan-nasabah-keluar.index');
+Route::get('buku-keuangan-nasabah-keluar/create/{id_masuk}', [BukuKeuanganNasabahKeluarController::class, 'create'])->name('buku-keuangan-nasabah-keluar.create');
+Route::post('buku-keuangan-nasabah-keluar', [BukuKeuanganNasabahKeluarController::class, 'store'])->name('buku-keuangan-nasabah-keluar.store');
+Route::get('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarController::class, 'show'])->name('buku-keuangan-nasabah-keluar.show');
+Route::get('buku-keuangan-nasabah-keluar/{id}/edit', [BukuKeuanganNasabahKeluarController::class, 'edit'])->name('buku-keuangan-nasabah-keluar.edit');
+Route::put('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarController::class, 'update'])->name('buku-keuangan-nasabah-keluar.update');
+Route::delete('buku-keuangan-nasabah-keluar/{id}', [BukuKeuanganNasabahKeluarController::class, 'destroy'])->name('buku-keuangan-nasabah-keluar.destroy');

@@ -37,6 +37,17 @@
                       </div>
                     </div>
                   </div>
+    
+                  {{-- Tambahan alamat jemput --}}
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="alamat_jemput" class="font-weight-bold">Alamat Jemput</label>
+                        <input type="text" class="form-control form-control-lg" id="alamat_jemput" name="alamat_jemput" placeholder="Masukkan alamat jemput">
+                      </div>
+                    </div>
+                  </div>
+    
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
@@ -61,6 +72,7 @@
         </div>
       </div>
     </section>
+    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

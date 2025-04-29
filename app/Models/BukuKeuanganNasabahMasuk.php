@@ -30,4 +30,9 @@ class BukuKeuanganNasabahMasuk extends Model
     {
         return $this->belongsTo(KlasifikasiSampah::class, 'klasifikasi_sampah_id');
     }
+    // Di model BukuKeuanganNasabahMasuk
+    public function bukuKeuanganNasabahKeluar()
+    {
+        return $this->hasMany(BukuKeuanganNasabahKeluar::class, 'buku_keuangan_nasabah_masuk_id');
+    }
 }
