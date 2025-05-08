@@ -25,4 +25,8 @@ class NamaRw extends Model
     {
         return $this->hasMany(DataNasabah::class);
     }
+    public function users()
+    {
+        return $this->hasMany(User::class, 'nama_rw_id');
+    }
 }

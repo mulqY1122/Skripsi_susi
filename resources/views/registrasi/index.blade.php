@@ -87,6 +87,7 @@
                   <th>Nama</th>
                   <th>Email</th>
                   <th>Role</th>
+                  <th>Nama Rw</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -96,6 +97,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role_name }}</td>
+                    <td>{{ optional($user->namaRw)->nama_rw ?? 'Nama RW Tidak Diketahui' }}</td>
                     <td>
                       <a href="{{ route('registrasi.show', $user->id) }}" class="btn btn-info btn-sm">Lihat</a>
                       @if(in_array(auth()->user()->role_name, ['Admin', 'Super Admin']))

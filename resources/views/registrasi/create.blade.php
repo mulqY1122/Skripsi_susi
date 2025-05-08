@@ -66,8 +66,17 @@
                     @endif
                   </select>
                 </div>
-                
-                
+
+                <div class="form-group">
+                  <label for="nama_rw_id">Nama RW:</label>
+                  <select id="nama_rw_id" name="nama_rw_id" class="form-control" required>
+                    <option value="">-- Pilih Nama RW --</option>
+                    @foreach($namaRws as $rw)
+                      <option value="{{ $rw->id }}">{{ $rw->nama_rw }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Buat Pengguna</button>
                 <a href="{{ route('registrasi.index') }}" class="btn btn-secondary">Kembali ke Daftar</a>
             </form>
